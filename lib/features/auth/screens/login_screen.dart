@@ -1,8 +1,5 @@
-import 'package:e_commerce/features/auth/services/firebase_auth_method.dart';
 import 'package:e_commerce/features/auth/widgets/custom_button.dart';
 import 'package:e_commerce/features/auth/widgets/custom_text_field.dart';
-import 'package:e_commerce/features/product/product_screen.dart';
-import 'package:e_commerce/util/utils.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -31,7 +28,6 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Container(
             height: MediaQuery.of(context).size.height / 1.2,
             alignment: Alignment.center,
-            padding: const EdgeInsets.all(20),
             decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
@@ -40,72 +36,83 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Form(
               key: _signInFormKey,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Text('Login  to get started'),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Text('Experience the all New App!'),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  CustomTextField(
-                      icon: Icons.email,
-                      controller: _emailController,
-                      hintText: 'E-mail ID'),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  CustomTextField(
-                      obscureText: true,
-                      icon: Icons.lock,
-                      controller: _passwordController,
-                      hintText: 'Password'),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  CustomButoon(
-                    text: 'Register',
-                    onTap: (() async {
-                      if (_signInFormKey.currentState!.validate()) {
-                        final isSignedIn = await AuthenticationService.singIn(
-                            email: _emailController.text,
-                            password: _passwordController.text);
-
-                        if (!mounted) return;
-                        if (isSignedIn == 'success') {
-                          Util.showSnack(context, content: 'User Signed In');
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const ProdcutScreen()),
-                          );
-                        } else {
-                          Util.showSnack(context,
-                              content: isSignedIn ?? 'unknown Error');
-                        }
-                      }
-                    }),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      GestureDetector(
-                        child: const Text(
-                          'Use Mobile Number',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.orange),
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const Text('Login  to get started'),
+                        const SizedBox(
+                          height: 10,
                         ),
-                        onTap: () {},
-                      )
-                    ],
-                  )
+                        const Text('Experience the all New App!'),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        CustomTextField(
+                            icon: Icons.email,
+                            controller: _emailController,
+                            hintText: 'E-mail ID'),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        CustomTextField(
+                            obscureText: true,
+                            icon: Icons.lock,
+                            controller: _passwordController,
+                            hintText: 'Password'),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            GestureDetector(
+                              child: const Text(
+                                'Use Mobile Number',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.orange),
+                              ),
+                              onTap: () {},
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Spacer(),
+                  Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration:
+                          BoxDecoration(border: Border.all(color: Colors.grey)),
+                      child: CustomButoon(
+                          text: 'Login',
+                          onTap: () {
+                            if (_signInFormKey.currentState!.validate()) {
+                              // final isSignedIn = await AuthenticationService.singIn(
+                              //     email: _emailController.text,
+                              //     password: _passwordController.text);
+
+                              // if (!mounted) return;
+                              // if (isSignedIn == 'success') {
+                              //   Util.showSnack(context, content: 'User Signed In');
+                              //   Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         builder: (context) => const ProdcutScreen()),
+                              //   );
+                              // } else {
+                              //   Util.showSnack(context,
+                              //       content: isSignedIn ?? 'unknown Error');
+                              // }
+                            }
+                          }))
                 ],
               ),
             ),

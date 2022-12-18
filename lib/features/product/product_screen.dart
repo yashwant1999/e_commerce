@@ -8,14 +8,19 @@ class ProdcutScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.only(top: 30),
+          padding: const EdgeInsets.only(top: 30, left: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Stack(
                 children: [
-                  Image.asset("images/spectacles.png"),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Image.asset(
+                      "images/spectacles.png",
+                    ),
+                  ),
                   Align(
                     alignment: Alignment.topRight,
                     child: Column(
@@ -29,6 +34,9 @@ class ProdcutScreen extends StatelessWidget {
                             Icons.heart_broken,
                             color: Colors.grey,
                           ),
+                        ),
+                        const SizedBox(
+                          height: 10,
                         ),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
@@ -45,22 +53,52 @@ class ProdcutScreen extends StatelessWidget {
                   )
                 ],
               ),
+              // Center(
+              //   child: Image.asset(
+              //     "images/spectacles.png",
+              //   ),
+              // ),
               const Spacer(),
-              const Text('Eyevy'),
-              const Text('Full Rim ROund..'),
+              const Text(
+                'Eyevy',
+                textScaleFactor: 1.5,
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              const Text(
+                'Full Rim Round, Cat-eyed Anti Glare Frame (48mm)',
+                textScaleFactor: 1.5,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
               Row(
                 children: [
                   Expanded(
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(),
-                        onPressed: () {},
-                        child: const Text('ADD TO CART')),
+                    child: SizedBox(
+                      height: 70,
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              elevation: 10, backgroundColor: Colors.white),
+                          onPressed: () {},
+                          child: const Text('ADD TO CART',
+                              style: TextStyle(
+                                  fontSize: 20, color: Colors.black))),
+                    ),
                   ),
                   Expanded(
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(),
-                        onPressed: () {},
-                        child: const Text('Buy Now')),
+                    child: SizedBox(
+                      height: 70,
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              elevation: 10, backgroundColor: Colors.orange),
+                          onPressed: () {},
+                          child: const Text(
+                            'Buy Now',
+                            style: TextStyle(fontSize: 20),
+                          )),
+                    ),
                   ),
                 ],
               )
