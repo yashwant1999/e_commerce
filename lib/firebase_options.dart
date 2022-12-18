@@ -52,11 +52,5 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCN_KzQtMYkW5rUQMQc9gbSovnN48ZCMgg',
-    appId: '1:533319731566:android:d094c2def27eb38210d97f',
-    messagingSenderId: '533319731566',
-    projectId: 'authentication-ac33b',
-    storageBucket: 'authentication-ac33b.appspot.com',
-  );
+  static const FirebaseOptions android = FirebaseOptions();
 }
